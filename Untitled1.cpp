@@ -1,20 +1,20 @@
 #include<stdio.h>
 
 int main(){
- 
-	long long int a, m, d, n;
+
+	int a, b, c;
 	
-	scanf("%lld %lld %lld %lld", &a, &m, &d, &n);
+	int day = 1;
 	
-	for(int i=1; i<m; i++){
-		a *= m;
-		a += d;
+	scanf("%d %d %d", &a, &b, &c);
+	
+	while(day%a || day%b || day%c){
+		day++;
 	}
 	
-	printf("%lld", a);
-		
-    return 0;
+	printf("%d", day);
+	
+	return 0;
 }
-
 
 
