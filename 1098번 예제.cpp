@@ -5,7 +5,7 @@ int main(){
 	int h, w, n, l, d, x, y;
 	int arr[100][100] = {};
 	
-	scanf("%d %d", &w, &h);
+	scanf("%d %d", &h, &w);
 	scanf("%d", &n);
 	
 	for(int i=1; i<=n; i++){
