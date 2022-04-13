@@ -2,17 +2,19 @@
 
 int main(){
 
-	int a, b, c;
+	int n, i, t;
 	
-	int day = 1;
+	int a[24] = {};
 	
-	scanf("%d %d %d", &a, &b, &c);
-	
-	while(day%a || day%b || day%c){
-		day++;
+	scanf("%d", &n);
+	for(i=1; i<=n; i++){
+		scanf("%d", &t);
+		a[t] += 1;
 	}
 	
-	printf("%d", day);
+	for(i=1; i<=23; i++){
+		printf("%d ", a[i]);
+	}
 	
 	return 0;
 }
