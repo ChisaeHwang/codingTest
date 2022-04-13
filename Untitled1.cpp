@@ -2,17 +2,14 @@
 
 int main(){
 
-	int n, i, t;
-	
-	int a[24] = {};
+	int n, i, a[100];
 	
 	scanf("%d", &n);
 	for(i=1; i<=n; i++){
-		scanf("%d", &t);
-		a[t] += 1;
+		scanf("%d", &a[i]);
 	}
 	
-	for(i=1; i<=23; i++){
+	for(i=n; i>=1; i--){
 		printf("%d ", a[i]);
 	}
 	
