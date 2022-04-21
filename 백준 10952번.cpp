@@ -8,11 +8,9 @@ int main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+
     int t;
-    cin >> t;
-    cin.ignore();
-   
+    cin.ignore(); // cin.ignore() 이 없을 경우 getline은 \n 까지 인식하기에 모든 스택을 인식하지 못한다
     while(t--){
         string str;
         getline(cin, str);
@@ -21,15 +19,14 @@ int main(){
         for (char ch : str) {
             if (ch == ' ' || ch == '\n'){
                 while (!s.empty()){
-                    cout << s.top();
+                    cout << s.top;
                     s.pop();
                 }
-                cout << ch;
-            } else {
-            	s.push(ch);
-			}
+            }
         }
     }
+    
+     // lifo : last in first out, stack을 역순으로 바꿔줌
 
 	return 0; 
 }

@@ -1,31 +1,6 @@
 #include <iostream>
 #include <stack>
 #include <string>
-
-int s; // stack의 size
-int a[10001];
-void push(int x) {
-	a[s] = x;
-	s++;
-}
-int pop() {
-	if (s == 0) return -1;
-	int t = a[s - 1];
-	s--;
-	return t;
-}
-int size() {
-	return s;
-}
-int top() {
-	if (s == 0) return -1;
-	return a[s - 1];
-}
-int empty() {
-	if (s == 0) return 1;
-	else return 0;
-}
-
 using namespace std;
 
 int main(){
@@ -42,7 +17,7 @@ int main(){
         
         getline(cin, str);
         str += '\n';
-        stack<char> s;
+        stack<char> s; // stack을 통해 역순이 가능함 
         for (char ch : str) {
             if (ch == ' ' || ch == '\n'){
                 while (!s.empty()){
@@ -51,8 +26,9 @@ int main(){
                 }
                 cout << ch;
             } else {
-            	s.push(ch);
+            	s.push(ch); // 순회하면서 위에서 출력함 
 			}
+
         }
     }
 
