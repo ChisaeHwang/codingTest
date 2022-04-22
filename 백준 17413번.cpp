@@ -33,7 +33,7 @@ int main(){
 	        if (ch == ' '){
 				print(s);
 	            cout << ch; // ' ' 출력 
-	        } else {
+	        } else { // 그냥 문자들은 다 push 되어 스택에 쌓임 
 	            s.push(ch); // 스택을 쌓다가 ' '가 나오면 결국 위에서 출력함 
 			}
 		}
