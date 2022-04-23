@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+int over[1000001];
 int main(){
 
     ios_base::sync_with_stdio(false);
@@ -16,20 +17,23 @@ int main(){
    
    for (int i=0; i<n; i++){
    		cin >> a[i];
+   		over[a[i]] += 1;
+   		cout << over[a[i]];
    }
 
 	stack<int> s;
+	s.push(0);
 	
-		for (int i=0; i<n; i++){
-			while (!s.empty() && a[s.top()] < a[i]){
-				// 스택이 비지 않고
-				// 맨위 인덱스 보다  a[i] 가 클 경우에
-				// 스택이 비거나 큰 수가 나올 때 까지 반복 
-				num[s.top()] = a[i];
-				s.pop();
-			}
+	for (int i=1; i<n; i++){
+		if(s.empty()){
 			s.push(i);
 		}
+		while (!s.empty() && over[a[s.top()]] < over[a[i]]){
+			num[s.top()] = a[i];
+			s.pop();
+		}
+		s.push(i);
+	}
 	
 	while (!s.empty()){
 		num[s.top()] = -1;
