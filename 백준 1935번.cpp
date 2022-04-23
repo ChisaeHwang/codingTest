@@ -19,8 +19,7 @@ int main(){
     
     for(int i=0; i<n; i++){
     	cin >> arr[i];
-	}
-    
+	}    
     for(int i=0; i<str.length(); i++){
     	if(str[i] == '*'){
     		double a = s.top();
