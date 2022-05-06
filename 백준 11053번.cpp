@@ -20,8 +20,7 @@ int main(){
 		d[i] = 1;
 		for(int j=0; j<i; j++){
 			if(arr[j] < arr[i]){ // j < i ÀÌ´Ù  
-				d[i] = max(d[i], d[j] + 1);
-				cout << d[i];
+				d[i] = max(d[i], d[j] + 1); // d[i]++
 			}
 		}
 		ans = max(ans,d[i]);
