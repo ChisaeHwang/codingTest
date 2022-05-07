@@ -13,9 +13,17 @@ int main(){
 	cin >> n;
 	
 	queue<int> q;
-	for(int i=0; i<n; i++){
+	for(int i=1; i<=n; i++){
 		q.push(i);
 	}
 	
+	while (q.size() > 1) { // 사이즈 하나 남을때 까지 
+		q.pop();
+		q.push(q.front());
+		q.pop();
+	}
 	
+	cout << q.front() << " ";
+	
+	return 0;
 }
