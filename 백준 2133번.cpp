@@ -3,13 +3,28 @@
 
 using namespace std;
 
+
+int D[31]= {1, 0, 3};
 int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int n;
+    cin >> n;
+
+    if(n%2==0){
+        for(int i=4; i<=n; i+=2){
+    		D[i] = 3*D[i-2];
+    		for(int j=4; j<=i; j+=2){
+    			if(j%2==0){
+        			D[i] += 2*D[i-j];		
+				}
+			}
+		}	
+	}
 	
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	
-	
-	
-	return 0;
-	
+	cout << D[n];
+    
+    return 0;
 }

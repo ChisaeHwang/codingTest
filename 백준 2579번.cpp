@@ -5,7 +5,7 @@ using namespace std;
 
 int dp[301];
 int arr[301]; 
-int main(){
+int main() {
 	
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
