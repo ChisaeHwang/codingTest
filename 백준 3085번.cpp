@@ -26,7 +26,7 @@ int check(vector<string> &a){
 			if(a[j][i] == a[j-1][i]){
 				cnt += 1;
 			} else {
-				cnt = 1;
+				cnb t = 1;
 			}
 			if(ans < cnt) ans = cnt;
 		}
@@ -52,7 +52,7 @@ int main(){
 	for(int i=0; i<n; i++){
 		for(int j=0; j<n; j++){
 			if(j+1 < n){ // 오른쪽으로  
-				swap(a[i][j], a[i][j+1]);
+				swap(a[i][j], a[i][j+1]); // 교환 
 				int temp = check(a);
 				if(ans < temp) ans = temp;
 				swap(a[i][j], a[i][j+1]);
