@@ -15,10 +15,8 @@ void go(int idx, int n, int m) { // index번째를 채워야함
 		return; //수열을 출력 
 	}
 	for (int i=0; i<n; i++){
-		if(c[i]) continue;
-		c[i] = true; a[idx] = num[i];
+		a[idx] = num[i];
 		go(idx+1, n, m);
-		c[i] = false;
 	}
 }
 
