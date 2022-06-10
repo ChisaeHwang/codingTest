@@ -1,13 +1,12 @@
-#include <cstdio>
+#include <iostream>
 #include <algorithm>
 #include <cstring>
 #include <vector>
 #include <queue>
 using namespace std;
 
-int main() {
+int main(){
 	
-	
-	 
 	return 0;
 }
+
