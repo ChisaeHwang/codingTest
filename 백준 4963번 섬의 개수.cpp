@@ -27,6 +27,7 @@ void bfs(int x, int y, int cnt) {
         }
     }
 }
+
 int main() {
     while (true) {
         scanf("%d %d",&m,&n);

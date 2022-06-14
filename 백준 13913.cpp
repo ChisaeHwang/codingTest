@@ -5,6 +5,15 @@ using namespace std;
 const int MAX = 200000;
 bool check[MAX + 1];
 int dist[MAX + 1];
+int from[MAX + 1]; // 어디에서 왔는지 
+
+void print(int n, int m){
+	if (n != m){
+		print(n, from[m]);
+	}
+	
+	cout << m << ' ';
+}
 
 int main()
 {
@@ -26,6 +35,7 @@ int main()
             {
                 q.push(now - 1);
                 check[now - 1] = true;
+                from[now -1] = now;
                 dist[now - 1] = dist[now] + 1;
             }
         }
@@ -35,6 +45,7 @@ int main()
             {
                 q.push(now + 1);
                 check[now + 1] = true;
+                from[now + 1] = now;
                 dist[now + 1] = dist[now] + 1;
             }
         }
@@ -44,12 +55,15 @@ int main()
             {
                 q.push(now * 2);
                 check[now * 2] = true;
+                from[now * 2] = now;
                 dist[now * 2] = dist[now] + 1;
             }
         }
     }
 
     cout << dist[m] << '\n';
+    
+    print(n, m);
 
     return 0;
 }
