@@ -26,11 +26,11 @@ int main()
 			q.push(make_pair(s,s));
 		}
 		if(s+c <= n && d[s+c][c] == -1){
-			d[s+c][s] = d[s][c] + 1;
+			d[s+c][c] = d[s][c] + 1;
 			q.push(make_pair(s+c, c));
 		}
 		if(s-1 >= 0 && d[s-1][c] == -1){
-			d[s-1][s] = d[s][c] + 1;
+			d[s-1][c] = d[s][c] + 1;
 			q.push(make_pair(s-1, c));
 		}
 	}
