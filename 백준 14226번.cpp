@@ -14,6 +14,7 @@ int main()
     queue<pair<int,int>> q;
     q.push(make_pair(1,0));
 	d[1][0] = 0;
+	pair<int , int > pp;
 	
 	while(!q.empty()){
 		int s, c;
@@ -23,7 +24,8 @@ int main()
 		// 0 이상 :  방문함 / -1 : 방문 안함 
 		if(d[s][s] == -1){
 			d[s][s] = d[s][c] + 1;
-			q.push(make_pair(s,s));
+			pp = {s, s};
+			q.push(pp);
 		}
 		if(s+c <= n && d[s+c][c] == -1){
 			d[s+c][c] = d[s][c] + 1;
