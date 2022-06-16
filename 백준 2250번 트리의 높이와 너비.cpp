@@ -1,0 +1,78 @@
+#include <cstdio>
+#include <algorithm>
+#include <queue>
+#include <iostream>
+#define left _left
+#define right _right
+
+using namespace std;
+
+struct Node {
+ int left, right;
+ int order, depth;
+};
+
+Node a[10001];
+int left[10001];
+int right[10001];
+int cnt[10001];
+int order = 0;
+
+// n : node, d : depth
+void inorder(int n, int d){
+	if(n == -1) return;
+	inorder(a[n].left, d+1);
+	a[n].order = ++order;
+	a[n].depth = d;
+	inorder(a[n].right, d+1);
+}
+
+int main(){
+	
+	int n;
+	cin >> n;
+	for(int i=0; i<n; i++){
+		int x, y, z;
+		cin >> x >> y >> z;
+		a[x].left = y;
+		a[x].right = z;
+		if(y != -1) cnt[y] += 1; // 루트가 1이 아닐 수도 있음 
+		if(z != -1) cnt[z] += 1; // 부모의 수 모두 세어주기 
+	}
+	
+	int root = 0;
+	for(int i=1; i<=n; i++){
+		if(cnt[i] == 0){
+			root = i; // 부모가 없는걸 루트라고 정하기 
+		}
+	}
+	
+	inorder(root, 1);
+	
+	int maxdepth = 0;
+	for(int i=1; i<=n; i++){
+		int depth = a[i].depth;
+		int order = a[i].order;
+		if (left[depth] == 0) { // 제일 왼쪽 
+			left[depth] = order;
+		} else { // 제일 오른쪽 
+			left[depth] = min(left[depth], order);
+		}
+		
+		right[depth] = max(right[depth], order);
+		maxdepth = max(maxdepth, depth);
+	} 
+	
+	int ans = 0;
+	int ans_level = 0;
+	for(int i=1; i<=maxdepth; i++){ // 정답의 최댓값 
+		if(ans < right[i]-left[i]+1){
+			ans = right[i]-left[i]+1;
+			ans_level = i;
+		}
+	}
+	
+	cout << ans_level << ' ' << ans << '\n';
+	
+	return 0;
+}
