@@ -36,14 +36,14 @@ int main(){
 		cin >> x >> y >> z;
 		a[x].left = y;
 		a[x].right = z;
-		if(y != -1) cnt[y] += 1; // 루트가 1이 아닐 수도 있음 
-		if(z != -1) cnt[z] += 1; // 부모의 수 모두 세어주기 
+		if(y != -1) cnt[y] += 1; 
+		if(z != -1) cnt[z] += 1; 
 	}
 	
 	int root = 0;
 	for(int i=1; i<=n; i++){
 		if(cnt[i] == 0){
-			root = i; // 부모가 없는걸 루트라고 정하기 
+			root = i; 
 		}
 	}
 	
@@ -53,9 +53,9 @@ int main(){
 	for(int i=1; i<=n; i++){
 		int depth = a[i].depth;
 		int order = a[i].order;
-		if (left[depth] == 0) { // 제일 왼쪽 
+		if (left[depth] == 0) { 
 			left[depth] = order;
-		} else { // 제일 오른쪽 
+		} else { 
 			left[depth] = min(left[depth], order);
 		}
 		
@@ -65,7 +65,7 @@ int main(){
 	
 	int ans = 0;
 	int ans_level = 0;
-	for(int i=1; i<=maxdepth; i++){ // 정답의 최댓값 
+	for(int i=1; i<=maxdepth; i++){ 
 		if(ans < right[i]-left[i]+1){
 			ans = right[i]-left[i]+1;
 			ans_level = i;
