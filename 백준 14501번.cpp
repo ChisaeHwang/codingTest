@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int t[21]; 
-int p[21]; 
+int t[200001]; 
+int p[200001]; 
 int n;
 int temp=0;
 
