@@ -18,9 +18,9 @@ int main(){
 	}
 
 	if(dp[n] % 2 == 0){
-		cout << "CY" << '\n';
-	} else {
 		cout << "SK" << '\n';
+	} else {
+		cout << "CY" << '\n';
 	}
 	
 	return 0;
