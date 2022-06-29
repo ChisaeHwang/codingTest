@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-int dp[100001]; // 초기화
+int dp[100001]; 
 int coin[101];
 int main()
 {
