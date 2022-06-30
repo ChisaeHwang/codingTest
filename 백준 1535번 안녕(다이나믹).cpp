@@ -19,7 +19,7 @@ void dp(){
 }
 
 int main(int argc, const char * argv[]) {
-    // cin,cout 속도향상
+	
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
     
