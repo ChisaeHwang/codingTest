@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int dp[301][301];
-int arr[301][301];
+int dp[1001][1001];
+int arr[1001][1001];
 
 int main(){
 
@@ -22,7 +22,7 @@ int main(){
 		for(int j=1; j<=m; j++){
 			dp[i][j] = max(dp[i][j], dp[i-1][j] + arr[i-1][j-1]);
 			dp[i][j] = max(dp[i][j], dp[i][j-1] + arr[i-1][j-1]);
-			
+			dp[i][j] = max(dp[i][j], dp[i-1][j-1] + arr[i-1][j-1]);
 		}
 	}
 	
