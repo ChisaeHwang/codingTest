@@ -24,9 +24,11 @@ int main() {
 		}
 		dp[0] = 1;
 		
-		for(int i = 0; i < n; i++){
+		for(int i = 0; i < n; i++){ // 동전 종류만큼 반복문을 돌기
+		 // 선택된 동전이 a[i]원짜리의 동전이면 a[i] ~ 목표금액 만큼 돌기 
 			for(int j = coin[i]; j <= m; j++){
-				dp[j] += dp[j - coin[i]];
+				// j원을 만들수 있는 가짓수 += (j - a[i])원을 만들수 있는 가짓수
+				dp[j] = dp[j] + dp[j - coin[i]];
 			}
 		}
 		
