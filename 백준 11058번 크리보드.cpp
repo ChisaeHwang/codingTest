@@ -22,6 +22,12 @@ int main() {
 		dp[i] = max({dp[i - 1] + 1, dp[i - 3] * 2, dp[i - 4] * 3, dp[i - 5] * 4});
 	}
 	
+//	for (int i = 6; i <= N; i++) {
+//		dp[i] = dp[i - 1] + 1;
+//		for (int j = 1; j <= i - 2; j++)
+//			dp[i] = max(dp[i], dp[i - 2 - j] * (j + 1));
+//	}
+	
 	cout << dp[n] << '\n';
 	
 	return 0;
