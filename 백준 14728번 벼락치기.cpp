@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int dp[10001]; 
+int dp[10001]; // dp[i] = t : i 시간 동안 최대 t 점수 
 
 int main() {
 	
