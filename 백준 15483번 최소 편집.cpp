@@ -20,7 +20,7 @@ int main() {
 	
 	for (int i = 1; i <= to.length(); i++){
 		for (int j = 1; j <= from.length(); j++){
-			// 문자열 인덱스는 0부터ㅑ 시작하므로 i - 1, j - 1부터 시작 
+			// 문자열 인덱스는 0부터 시작하므로 i - 1, j - 1부터 시작 
 			if(from[j - 1] == to[i - 1]){
 				dp[i][j] = dp[i - 1][j - 1];
 			} else {
