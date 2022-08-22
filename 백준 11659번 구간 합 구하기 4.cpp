@@ -19,7 +19,6 @@ int main() {
 	
 	for(int i = 1; i <= n; i++){
 		arr[i] += arr[i - 1];
-		cout << arr[i - 1] << " ";
 	}
 	
 	for(int i = 0; i < m; i++){
