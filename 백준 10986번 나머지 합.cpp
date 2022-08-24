@@ -23,10 +23,11 @@ int main()
 
 	for (int i = 0; i <= 1000; i++)
 	{
-		ans += cnt[i] * (cnt[i] - 1) / 2;
+		ans += cnt[i] * (cnt[i] - 1) / 2; // nC2 ¸¸Å­ ´õÇØÁÜ 
 	}
 	
 	cout << cnt[0] + ans;
 	
 	return 0; 
 }
+
