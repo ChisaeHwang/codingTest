@@ -6,7 +6,12 @@ using namespace std;
 
 int main() {
 	
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	
 	int n, c;
+	
+	cin >> n >> c;
 	
 	vector<int>house(n, 0);
 	
@@ -21,12 +26,12 @@ int main() {
 	while(low <= high) 
 	{
 		int cnt = 1;
-		int prev = 0;
+		int start = 0;
 		int mid = (low + high) / 2;
 		
 		for (int i = 1; i < n; i++){
-			if (house[i] - house[prev] >= mid){
-				prev = i;
+			if (house[i] - house[start] >= mid){
+				start = i;
 				cnt++;
 			}
 		}
