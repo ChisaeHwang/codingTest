@@ -26,5 +26,7 @@ int main() {
 		result = h - y;
 	}
 	
+	cout << result << '\n';
+	
 	return 0;
 }
