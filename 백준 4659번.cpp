@@ -19,7 +19,12 @@ int main () {
 		
 		for(int i = 0; i < s.size(); i++){
 			int idx = s[i]; 
-			if(isVowel(idx))lcnt++, vcnt = 0, is_include_v = 1;
+			if(isVowel(idx)) {
+				lcnt++,
+				vcnt = 0,
+				is_include_v = 1;	
+			}
+			
 			else vcnt++, lcnt = 0;
 			if(vcnt == 3 || lcnt == 3) flag = 1; 
 			if(i >= 1 && (prev == idx) && (idx != 'e' && idx != 'o')){
