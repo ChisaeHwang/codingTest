@@ -35,11 +35,11 @@ int main()
         fill(&a[0][0], &a[0][0] + 51 * 51, 0);
         fill(&visited[0][0], &visited[0][0] + 51 * 51, 0);
         ret = 0;
-        cin >> m >> n >> k;
+        cin >> m >> n >> k; // 가로, 세로
         for (int i = 0; i < k; i++)
         {
-            cin >> x >> y;
-            a[y][x] = 1;
+            cin >> x >> y;  // 좌표를 받는다
+            a[y][x] = 1; // y는 행 x는 열
         }
         for (int i = 0; i < n; i++)
         {
@@ -56,4 +56,21 @@ int main()
     }
 
     return 0;
+}
+
+void fun() {
+
+    int a = 0;
+
+    cin >> a;
+
+    switch (expression)
+    {
+    case 
+        /* code */
+        break;
+    
+    default:
+        break;
+    }
 }
