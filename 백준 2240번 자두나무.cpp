@@ -8,7 +8,7 @@ int b[1001];
 
 int go (int idx, int tree, int cnt) {
 	if (cnt < 0) return -1e9; // 아래 로직에서 그냥 -1이 들어올 수 도 있기에 체크 
-	if (idx == n) return cnt == 0 ? 0 : -1e9;
+	if (idx == n) return 0;
 	
 	
 	int &ret = dp[idx][tree][cnt];
@@ -16,8 +16,10 @@ int go (int idx, int tree, int cnt) {
 	// ~ = -(n+1) 이다 
 	
 	
+	// 움직이거나 안 움직이거나 
 	return ret = max(go(idx + 1, tree ^ 1, cnt - 1), go(idx + 1, tree, cnt)) + (tree == b[idx] - 1);
-}
+}			// 1의 ^ (XOR 연산자) 는 0이 됨, 0의 ^ (XOR 연산자)는 1이 됨 
+			// if문을 없앨 수 있음 
 
 
 int main() {
