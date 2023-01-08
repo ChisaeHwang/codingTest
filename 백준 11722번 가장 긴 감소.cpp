@@ -2,13 +2,14 @@
 
 using namespace std;
 
-int n;
-int dp[101][11]; 
+int n, ret;
+int arr[1001];
+int dp[1001]; 
+
 
 int main() {
 	
-
 	
 	
 	return 0;
-} 
+}
