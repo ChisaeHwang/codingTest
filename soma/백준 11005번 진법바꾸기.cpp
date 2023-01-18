@@ -1,29 +1,30 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-int n, m, a;
-vector<int> v;
+int main()
+{
+    int n, b;
+    cin >> n >> b;
 
-int main() {
+    string b_num;
+    while (n != 0)
+    {
+        int tmp = n % b;
+        if (tmp > 9)
+        {
+            tmp = tmp - 10 + 'A';
+            b_num += tmp;
+        }
+        else
+        {
+            b_num += ('0' + tmp);
+        }
+        n /= b;
+    }
+    reverse(b_num.begin(), b_num.end());
 
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	
-	cin >> n >> m;
-	
-	for (int i = 0; i < n; i++) {
-		cin >> a;
-		v.push_back(a);
-	}
-	
-	sort(v.begin(), v.end());
-	
-	cout << v[m - 1] << '\n';
-	
-	
-	
-	
-	
-	return 0;
+    cout << b_num << '\n';
+
+    return 0;
 }
