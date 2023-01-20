@@ -12,6 +12,7 @@ int main()
         cout << "0\n";
         return 0;
     }
+    
 
     string result;
     while (n != 0)
@@ -25,10 +26,17 @@ int main()
             result += "1";
             n = (n-1) / -2;
         }
+        
+        cout << n << '\n'; 
     }
+
     reverse(result.begin(), result.end());
 
+
+
     cout << result << '\n';
+
+
 
     return 0;
 }
