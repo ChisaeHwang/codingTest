@@ -3,6 +3,7 @@
 using namespace std;
 
 int t, n;
+	int arr[1000001]={1,1,1,0,};
 
 // 시간초과 풀이 
 
@@ -18,6 +19,20 @@ bool check(int n) {
 }
 
 int main() {
+	
+  for(int i=2; i*i<1000000; i++)
+  {
+    if(arr[i]==0) 
+    for(int j=i*i; j<1000000; j+=i)
+	    {
+	      arr[j] = 1; // true면 소수가 아님 
+	    }
+  }
+  
+	for (int i = 0; i < 100; i++) {
+		if (arr[i])  cout << i << " ";
+	}
+
 	
 	while(true) {
 		

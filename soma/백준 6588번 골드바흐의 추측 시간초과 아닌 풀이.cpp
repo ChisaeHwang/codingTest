@@ -9,28 +9,30 @@ int main() {
   for(int i=2; i*i<1000000; i++)
   {
     if(arr[i]==0)
-    for(int j=i*i; j<1000000; j+=i)
-    {
-      arr[j]=1;
-    }
+	    for(int j=i*i; j<1000000; j+=i)
+	    {
+	      arr[j]=1;
+	    }
   }
-
+  
   cin.tie(NULL);
   ios_base::sync_with_stdio(0);
 
-  while(1)
+  while(true)
   {
     cin>>n;
-    if(!n) break;
+    
+    if(n == 0) break;
 
-    left=3;
-    right=n-3;
+    left = 3;
+    right = n-3;
 
     while(left <= right)
     {
       if(!arr[left] && !arr[right])
-        if((left+right) == n)
+        if((left + right) == n)
           break;
+          
       left+=2;
       right-=2;
     }
@@ -38,4 +40,6 @@ int main() {
     if(left>right)  cout<<"Goldbach's conjecture is wrong.";
     else cout<<n<<" = "<<left<<" + "<<right<<'\n';
   }
+  
+  
 }
