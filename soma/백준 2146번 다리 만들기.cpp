@@ -7,12 +7,9 @@ int dy[4] = {1, 0, -1, 0};
 int dx[4]  = {0, 1, 0, -1};
 int arr[101][101];
 int visited[101][101]; // º∂±∏∫–
-int dist[101][101] // º∂≥¢∏Æ √÷¥‹∞≈∏Æ 
-queue<pair<int,int>> q;
+int dist[101][101]; // º∂≥¢∏Æ √÷¥‹∞≈∏Æ 
  
 // 1. ∞¢ º∂µÈ ±∏«œ±‚
-// 2. ∞¢ º∂ø° ∏¬√Áº≠ ¥ŸΩ√ bfs µπ∏Æ±‚
-// 3. 
 
 int main() {
 	
@@ -23,6 +20,8 @@ int main() {
 			cin >> arr[i][j];
 		}
 	} 
+	
+	cout << '\n';	cout << '\n';
 	
 	int cnt = 0; // ∞¢ º∂∫Œ≈Õ √£±‚ 
 	
@@ -54,9 +53,56 @@ int main() {
 	
 	int sum = -1; // ∞¢ º∂ø°º≠∫Œ≈Õ ∞£√¥ ¥¿≥¶¿∏∑Œ øµø™»Æ¿Â»ƒ √÷º⁄∞™ ≥÷±‚ 
 	
-	for (int i = 1; i <= cnt; i++) {
+	for (int l = 1; l <= cnt; l++) {
+		queue<pair<int, int>> q;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				dist[i][j] = -1;
+				if (visited[i][j] == l) {
+					q.push({i, j});
+					dist[i][j] = 0;
+				}
+			}
+		}
 		
+		while (q.size()) {
+			int x = q.front().first;
+			int y = q.front().second;
+			q.pop();
+			
+			for (int i = 0; i < 4; i++) {
+				int nx = x + dx[i];
+				int ny = y + dy[i];
+				if (nx < 0 || nx >= n || ny < 0 || nx >= n) continue;
+				if (dist[nx][ny] == -1) {
+					dist[nx][ny] = dist[x][y] + 1;
+					q.push({nx, ny});	
+				}
+			}
+		}
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (arr[i][j] == 1 && visited[i][j] != l) { // ¥Ÿ∏•¿∞¡ˆ¿Ã¥Ÿ 
+					if (sum == -1 || dist[i][j] - 1 < sum) {
+						sum = dist[i][j] - 1;
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << dist[i][j] << " ";
+			}
+			cout << '\n';
+		}
+		
+			cout << '\n';	cout << '\n';
 	}
+	
+	
+	cout << sum << '\n';
 	
 	
 	return 0;
