@@ -3,7 +3,23 @@
 using namespace std;
 
 int arr[11];
-int n, m, a, ret; 
+int n, m, a; 
+
+int ok(int c) {
+	if (c == 0) {
+		return arr[c] ? 0 : 1;
+	}
+	
+	int len = 0;
+	
+	while (c > 0) {
+		if(arr[c % 10]) return 0; // 마지막 번호값이 0인 경우
+		len += 1;
+		c /= 10;
+	}
+	
+	return len;
+}
 
 
 int main() {
@@ -15,16 +31,28 @@ int main() {
 		arr[a] = 1;	
 	}
 	
-	int now = n - 100;
+	int ret = n - 100;
 	
-	if (now < 0) {
-		now = -now;
+	if (ret < 0) {
+		ret = -ret;
 	}
 	
+	for (int i = 0; i <= 10; i++) {
+		int c = i; // 이동 채널 
+		int len = ok(c); // len \
+		
+		if (len > 0) {
+			int press = c - n;
+			
+			if (press < 0) {
+				press = -press;
+			}
+			
+			ret = min(ret, len + press);
+		} 
+	}
 	
-	
-	
-	
+	cout << ret << '\n';
 	
 	
 	
