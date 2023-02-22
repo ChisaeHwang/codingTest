@@ -6,7 +6,7 @@ int n, m;
 int arr[10];
 int visited[10]; 
 
-void dfs(int cnt) {
+void dfs(int cnt, int start) {
 	
 	if (cnt == m) {
 		for (int i = 0; i < m; i++) {
@@ -16,9 +16,9 @@ void dfs(int cnt) {
 		return;
 	}
 	
-	for (int i = 1; i <= n; i++) {
+	for (int i = start; i <= n; i++) {
 		arr[cnt] = i;
-		dfs(cnt + 1);
+		dfs(cnt + 1, i);
 	}
 	
 }
@@ -27,7 +27,7 @@ int main() {
 	
 	cin >> n >> m;
 	
-	dfs(0);
+	dfs(0, 1);
 	
 	return 0;
 }
