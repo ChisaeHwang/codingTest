@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int t, n, m, k;
+int n, m, ret;
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
-int arr[51][51];
-int visited[51][51];
+int arr[101][101];
+int visited[101][101];
 queue<pair<int, int>> q; 
 
 void bfs(int x, int y) {
@@ -26,7 +26,7 @@ void bfs(int x, int y) {
     		if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
     		if (visited[nx][ny]) continue;
     		if (arr[nx][ny] == 0) continue;
-    		visited[nx][ny] = 1;
+    		visited[nx][ny] = visited[x][y] + 1;
     		q.push({nx, ny});
 		}
 	}
@@ -34,36 +34,17 @@ void bfs(int x, int y) {
 
 int main() {
     
-    cin >> t;
+    cin >> n >> m;
     
-    while(t--) {
-        
-        memset(arr, 0, sizeof(arr));
-        memset(visited, 0, sizeof(visited));
-        
-        cin >> n >> m >> k;
-        
-        int cnt = 0;
-        
-        for (int i = 0; i < k; i++) {
-            int x, y;
-            cin >> x >> y;
-            arr[x][y] = 1;
-        }
-        
-        for (int i = 0; i < n; i++) {
-        	 for (int j = 0; j < m; j++) {
-        		if (arr[i][j] == 0 || visited[i][j]) continue;
-        		bfs(i, j);
-        		cnt++;
-			}
+    for (int i = 0; i < n; i++) {
+    	for (int j = 0; j < m; j++) {
+    		scanf("%1d", &arr[i][j]);
 		}
-		
-		cout << cnt << '\n';
-        
-    }
-    
-    
+	}
+	
+	bfs(0, 0);
+	
+	cout << visited[n - 1][m - 1] << '\n';
     
     return 0;
 }
