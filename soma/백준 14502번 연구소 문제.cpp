@@ -33,7 +33,7 @@ void bfs(int x, int y) {
 	}
 }
 
-int solve() {
+int cal() {
 	memset(visited, 0, sizeof(visited));
 	
 	for (pair<int, int> a : virus) {
@@ -66,14 +66,13 @@ int main() {
 		}
 	}
     
-    
     for (int i = 0; i < wall.size(); i++) {
     	for (int j = 0; j < i; j++) {
     		for (int k = 0; k < j; k++) {
     			arr[wall[i].first][wall[i].second] = 1;
     			arr[wall[j].first][wall[j].second] = 1;
     			arr[wall[k].first][wall[k].second] = 1;
-    			ret = max(ret, solve());
+    			ret = max(ret, cal());
     			arr[wall[i].first][wall[i].second] = 0;
     			arr[wall[j].first][wall[j].second] = 0;
     			arr[wall[k].first][wall[k].second] = 0;
