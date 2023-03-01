@@ -4,6 +4,7 @@ using namespace std;
 
 int n, m;
 int arr[101];
+int dp[101];
 
 int main() {
 	
