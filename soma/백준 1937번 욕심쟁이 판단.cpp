@@ -3,8 +3,8 @@
 using namespace std;
 
 int n, m;
-int arr[101];
-int dp[101];
+int arr[25];
+int dp[10001];
 
 int main() {
 	
@@ -14,8 +14,10 @@ int main() {
 		cin >> arr[i];
 	}
 	
-	for (int i = 0; i < m; i++) {
-		
+	for (int i = 0; i < n; i++) {
+		for (int j = arr[i]; j <= m; j++) {
+			dp[j] += dp[j - arr[i]]
+		}
 	}
 	
 	
