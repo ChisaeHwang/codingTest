@@ -8,9 +8,11 @@ int visited[101];
 int ret[101];
 
 void dfs(int cur, int prev) {
+	
 	if (visited[cur]) {
-		if (cur != prev) continue;
-		ret[cnt++] = cur;
+		if (cur == prev) {
+			ret[cnt++] = cur;	
+		}
 	} else {
 		visited[cur] = 1;
 		dfs(arr[cur], prev);
@@ -21,15 +23,20 @@ int main() {
 	
 	cin >> n;
 	
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		cin >> arr[i];
 	}
 	
 	for (int i = 1; i <= n; i++) {
-		memset()
+		memset(visited, 0, sizeof(visited));
+		dfs(i, i);
 	}
 	
-    cout << ans << endl;
+    cout << cnt << '\n';
+    
+    for (int i = 0; i < cnt; i++) {
+    	cout << ret[i] << '\n';
+	}
 	
 	
 	return 0;
