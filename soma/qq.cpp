@@ -11,9 +11,9 @@ int main() {
     vector<int> number(maxNum - minNum + 1, 0);
     
     for (long long i = 2; i * i <= maxNum; i++) {
-        long long n = minNum / (i * i); // i의 제곱수의 배수 중 가장 작은값 
+        long long n = minNum / (i * i); // i의 제곱수의 배수인지 확인 
         
-        if (min % (i * i)) n++; // 바로 나눠 지면 n++하고 시작 
+        if (min % (i * i)) n++; // 제곱수의 배수가 아니면 n++하고 시작 
 
         // i의 제곱수의 배수는 무조건 제곱인 수가 됨 
         while (n * i * i <= max) {
@@ -31,4 +31,3 @@ int main() {
     cout << cnt << '\n';
     return 0;
 }
-
