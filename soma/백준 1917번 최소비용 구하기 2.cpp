@@ -5,7 +5,7 @@ using namespace std;
 
 int n, m, start, endP;
 
-vector<int> solve(vector<vector<pair<int, int>>> &graph, int start) {
+vector<int> solve(vector<vector<pair<int, int>>> &graph, vector<int>& predecessor,int start) {
 	
 	vector<int> dist(n + 1, INF); // 각 도시의 최단거리 
 	
@@ -27,6 +27,7 @@ vector<int> solve(vector<vector<pair<int, int>>> &graph, int start) {
 			if(nDist < dist[nNow]) { // 방문 안했을 경우 
 				dist[nNow] = nDist;
 				pq.push({nDist, nNow});
+				predecessor[nNow] = now; // 추적 용도 
 			}
 		} 
 		
@@ -41,6 +42,8 @@ int main() {
 	
 	vector<vector<pair<int, int>>> graph(n + 1); // 기본 도화지
 	
+	vector<int> predecessor(n+1, -1);
+	
 	for(int i = 0; i < m; i++) {
 		int from, to, cost;
 		cin >> from >> to >> cost;
@@ -49,12 +52,30 @@ int main() {
 	
 	cin >> start >> endP;
 	
-	vector<int> dist = solve(graph, start);
+    vector<int> dist = solve(graph, predecessor, start);
 	
 	if(dist[endP] == INF)  // 출발 도시에서 도착 도시까지 갈 수 없는 경우
     	cout << "INF" << '\n';
 	else  // 출발 도시에서 도착 도시까지의 최소 비용을 출력
     	cout << dist[endP] << '\n';
+    	
+	int temp = endP;
+	
+	stack<int> path;
+	
+	while(temp != -1) { // 마지막 node까지 순회 
+		path.push(temp);
+		
+		temp = predecessor[temp];
+	}
+	
+	cout << path.size() << '\n';
+	
+	while(path.size()) {
+		cout << path.top() << ' ';
+		path.pop();
+	}
+	
 	
 	
 	return 0;
