@@ -46,7 +46,7 @@ int main() {
 				int middleTease = max(max_dog[i][mid], max_dog[mid][j]);
 				int directTease = max_dog[i][j];
 
-				// middle 경유 비용 + middle지점 거칠때 괴롭힘 vs 직진 경유 비용 + 직진일 때 괴롭힘
+				// mid경유 비용 + mid지점 거칠때 괴롭힘 < 직진 경유 비용 + 직진일 때 괴롭힘
 				if (graph[i][mid] + graph[mid][j] + middleTease < graph[i][j] + directTease) {
 					graph[i][j] = graph[j][i] = graph[i][mid] + graph[mid][j];
 					max_dog[i][j] = max_dog[j][i] = middleTease;
