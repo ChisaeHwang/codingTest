@@ -7,7 +7,6 @@ int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
 
 int n;
-int arr[51][51];
 
 int dijkstra(int n, vector<vector<int>>& board) {
 	vector<vector<int>> dist(n, vector<int>(n, INF));
