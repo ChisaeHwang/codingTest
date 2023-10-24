@@ -7,14 +7,15 @@
 using namespace std;
 
 int n, m;
-int a, b ,c;
-vector<pair<int, int>> adj[100011];
+vector<pair<int, int>> adj[1001];
+int pre[1001];
+int check = 0;
 
-vector<int> dij(int s) {
+int dij(int from, int to) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-	vector<int> dist(100011, INF);
-    dist[s] = 0;
-    pq.push({0, s});
+	vector<int> dist(1001, INF);
+    dist[1] = 0;
+    pq.push({0, 1});
     // cost, node
     
     while(pq.size()) {
@@ -28,25 +29,26 @@ vector<int> dij(int s) {
             int next = adj[now][i].first;
             int next_cost = cost + adj[now][i].second;
             
+            if(from == now && to == next || from == next && to == now) continue;
+            
             if(dist[next] > next_cost) {
+            	if(!check) {
+            		pre[next] = now;	
+				}
             	dist[next] = next_cost;
 				pq.push({next_cost, next}); 	
 			}
         }
     }
     
-    return dist;
+    return dist[n];
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     
-    cin >> n;
-    
-    cin >> a >> b >> c;
-    
-    cin >> m;
+    cin >> n >> m;
     
     for(int i = 0; i < m; i++) {
     	int from, to, cost;
@@ -55,27 +57,22 @@ int main() {
     	adj[to].push_back({from, cost});
 	}
 	
-	vector<vector<int>> v;
-
-    v.push_back(dij(a)); 
-    v.push_back(dij(b));  
-    v.push_back(dij(c));  
-    
-    int dist = -1;
-    int ret = 0;
-    
-    for(int i = 1; i <= n; i++) {
-    	if(i == a || i == b || i == c) continue;
-    	
-    	int len = min(v[0][i], min(v[1][i], v[2][i]));
-    	if(dist < len) { // 최솟값중에 최댓값 구하기 
-    		dist = len;
-    		ret = i;
+	int a = dij(0, 0);
+	check = 1;
+	pre[1] = 1;
+	
+	int ret = 0;
+	
+    for(int i = n; i != pre[i]; i = pre[i]) {
+    	int to = i;
+    	int from = pre[i];
+    	int temp = dij(to, from);
+    	if(temp > ret) {
+    		ret = temp;
 		}
 	}
 	
 	cout << ret << '\n';
-    
     
     return 0;
 }
