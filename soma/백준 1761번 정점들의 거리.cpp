@@ -7,7 +7,7 @@ int parent[40001][21];
 int depth[40001];
 int dist[40001];
 vector<vector<pair<int, int>>> adj;  //adjacency
-int n, m;
+int n, m, k;
 
 void dfs(int cur) {
 	
@@ -44,7 +44,7 @@ int LCA(int u, int v) {
 	
 	int diff = depth[u] - depth[v];
 	
-	for(int i = 0; diff != 0; i++) { // ±íÀÌ Á¶Àı 
+	for(int i = 0;  diff != 0; i++) { // ±íÀÌ Á¶Àı 
 		if(diff % 2 == 1) {
 			u = parent[u][i];
 		}
