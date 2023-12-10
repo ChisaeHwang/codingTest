@@ -9,7 +9,7 @@ int n, m;
 
 vector<vector<int>> dij(int sy, int sx) {
     priority_queue<tuple<int, int, int>, 
-          vector<tuple<int, int, int>>, 
+          vector<tuple<int, int, int>>,  
               greater<tuple<int, int, int>>> pq;
 
     vector<vector<int>> Tarr(n + 2, vector<int>(m + 2, INT_MAX));
