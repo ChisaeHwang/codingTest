@@ -145,14 +145,16 @@ int main() {
     if (find_C()) {
       remake();
     }
-  }
-
-  for(int i = 0; i < n; i++) {
+    
+      for(int i = 0; i < n; i++) {
     for(int j = 0; j < m; j++) {
       cout << adj[i][j];
     }
     cout << '\n';
   }
+    cout << '\n';  cout << '\n';
+  }
+
 
   return 0;
 }
