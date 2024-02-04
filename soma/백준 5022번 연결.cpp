@@ -26,12 +26,12 @@ void prevF(int sx, int sy, int ex, int ey, int num) {
     while (true) {
         path.push_back({cx, cy});
         arr[cx][cy] = num;
-        if (cx == sx && cy == sy) {
+       if (cx == sx && cy == sy) {
             break;
         }
         pair<int, int> prev = pre[cx][cy];
         if (prev.first < 0 || prev.first >= n + 1 || prev.second < 0 || prev.second >= m + 1) {
-            flag = false;
+			flag = false;
             return;
         }
         cx = prev.first;
@@ -39,6 +39,7 @@ void prevF(int sx, int sy, int ex, int ey, int num) {
     }
 
     reverse(path.begin(), path.end());
+
 }
 
 
@@ -108,6 +109,7 @@ int main() {
     // visited와 pre 배열 재설정
     fill(visited.begin(), visited.end(), vector<int>(m + 1, INF));
     fill(pre.begin(), pre.end(), vector<pair<int, int>>(m + 1, {-1, -1}));
+	// pre를 -1으로 초기화하면 만약 end -> start로 갈때 -1 -1이 나옴 
 
     // 두 번째 경로 계산
     dij(p[2].second, p[2].first, p[3].second, p[3].first);
