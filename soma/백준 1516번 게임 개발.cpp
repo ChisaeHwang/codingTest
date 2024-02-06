@@ -2,37 +2,25 @@
 
 using namespace std;
 
-long long int arr[101];
-long long int dp[101][21];
+int dp[10001]; // dp[i] i원에 얼마나 경우의 수가 있는지 
 
 int main() {
 	
-	int n;
+	int n, m;
 	
-	cin >> n;
+	cin >> n >> m;
 	
-	for(int i = 0; i < n; i++) {
-		cin >> arr[i];
+	dp[0] = 1;
+	
+	for(int i = 0; i < n; i++ ) {
+		int coin;
+		cin >> coin; // 각 coin을 추가할 때 마다 경우의 수 업데이트
+		for(int j = coin; j <= m; j++) {
+			dp[j] += dp[j - coin]; // j원이 되기전이 j - coin을 통해서 이전에 값을 + 해줌으로써 
+		} // dp 갱신 가능 
 	}
-	
-	dp[0][arr[0]] = 1;
-	
-	for(int i = 1; i <= n; i++) {
-		for(int j = 0; j < 21; j++) {
-			if(j - arr[i] >= 0) {
-				dp[i][j] += dp[i - 1][j - arr[i]];
-			}
-			
-			if(j + arr[i] < 21){
-				dp[i][j] += dp[i - 1][j + arr[i]];
-			}
-		}
-	}
-	
-	cout << dp[n - 2][arr[n - 1]] << '\n';
-	// n - 1 번째는 마지막으로 나와야하는 숫자
-	// 그러므로 n - 2번에서 arr[n - 1]이 나오는 경우의 수를 출력 
-	
+
+	cout << dp[m] << '\n';
 	
 	return 0;
 } 
