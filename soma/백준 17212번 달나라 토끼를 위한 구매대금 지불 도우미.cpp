@@ -6,7 +6,7 @@ int dp[100001];
 const int INF = 987654321;
 
 int main() {
-	
+	 
 	int n;
 	cin >> n;
 	
