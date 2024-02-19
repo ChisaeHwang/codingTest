@@ -1,42 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int dp[16][16]; 
-
-int solve(int sx, int sy, int ex, int ey) {
-	
-    memset(dp, 0, sizeof(dp));
-    dp[sx][sy] = 1; // 시작 지점
-
-    for (int i = sx; i <= ex; i++) {
-        for (int j = sy; j <= ey; j++) {
-            if (i > sx) dp[i][j] += dp[i-1][j];
-            if (j > sy) dp[i][j] += dp[i][j-1];
-        }
-    }
-
-    return dp[ex][ey];
-}
-
+int dp[51][1001]; 
+int arr[51];
 
 int main() {
+
+	int n, s, m;
 	
-    int n, m, k;
-    cin >> n >> m >> k;
-
- 	int ret = 0;
-    if (k == 0) {
-        ret = solve(0, 0, n-1, m-1);
-    } else {
-        k--; // 문제는 1으로 시작하지만, 배열은 0부터 시작 
-        int kn = k / m;
-		int km = k % m;
-        int AtoB = solve(0, 0, kn, km);
-        int BtoC = solve(kn, km, n-1, m-1);
-        ret = AtoB * BtoC;
-    }
-
-    cout << ret << endl;
+	cin >> n >> s >> m;
+	
+	for(int i = 1; i <= n; i++) {
+		cin >> arr[i];
+	}
+	
+	dp[0][s] = 1;
+	
+	for(int i = 1; i <= n; i++) {
+		for(int j = 0; j <= m; j++) {
+			if(dp[i - 1][j]) {				
+				if(j + arr[i] <= m) {
+					dp[i][j + arr[i]] = 1;
+				}
+				if(j - arr[i] >= 0) {
+					dp[i][j - arr[i]] = 1;
+				}	
+			}
+		}
+	}
+	
+	int ret = -1;
+	
+	for(int j = 0; j <= m; j++){
+		if(dp[n][j]) {
+			ret = j;
+		}
+	}
+	
+	cout << ret << '\n';
 
     return 0;
 }

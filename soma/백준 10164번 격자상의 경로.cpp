@@ -1,37 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int dp[41]; 
+int dp[16][16]; 
+
+int solve(int sx, int sy, int ex, int ey) {
+	
+    memset(dp, 0, sizeof(dp));
+    dp[sx][sy] = 1; // 시작 지점
+
+    for (int i = sx; i <= ex; i++) {
+        for (int j = sy; j <= ey; j++) {
+            if (i > sx) dp[i][j] += dp[i-1][j];
+            if (j > sy) dp[i][j] += dp[i][j-1];
+        }
+    }
+
+    return dp[ex][ey];
+}
+
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+	
+    int n, m, k;
+    cin >> n >> m >> k;
 
-    vector<int> vip(m + 2); 
-    vip[0] = 0; // 시작 지점
-    for(int i = 1; i <= m; i++) {
-        cin >> vip[i];
-    }
-    vip[m + 1] = n + 1; // 종료 지점
-
-    // 기본 조건 설정
-    dp[0] = 1; 
-    dp[1] = 1; 
-    dp[2] = 2; 
-
-
-    for (int i = 3; i <= n; i++) {
-        dp[i] = dp[i - 1] + dp[i - 2];
+ 	int ret = 0;
+    if (k == 0) {
+        ret = solve(0, 0, n-1, m-1);
+    } else {
+        k--; // 문제는 1으로 시작하지만, 배열은 0부터 시작 
+        int kn = k / m;
+		int km = k % m;
+        int AtoB = solve(0, 0, kn, km);
+        int BtoC = solve(kn, km, n-1, m-1);
+        ret = AtoB * BtoC;
     }
 
-    int result = 1;
-    
-    for (int i = 0; i <= m; i++) {
-        int sectionLength = vip[i + 1] - vip[i] - 1; // 각 구간의 길이 계산
-        result *= dp[sectionLength];
-    }
-
-    cout << result << endl; 
+    cout << ret << endl;
 
     return 0;
 }
