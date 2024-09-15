@@ -23,7 +23,7 @@ def bfs(arr, start_x, start_y):
 
 # 입력 받기
 n, m = map(int, input().split())
-arr = [list(map(int, input().strip())) for _ in range(n)]
+arr = [list(map(int, input().strip())) for _ in range(n)] # 2차원
 
 
 # BFS 실행 및 결과 출력
