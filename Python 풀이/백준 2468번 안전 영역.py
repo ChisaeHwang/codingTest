@@ -27,7 +27,10 @@ for height in range(0, 101):
     
     for i in range(N):
         for j in range(N):
-            if not visited[i][j] and area[i][j] > height:
+            # 영역이 겹치면 Visited가 전파됨
+            # 즉 물에 안 잠긴 영역이 몇개로 나뉘어졌는지 확인 가능
+            # 그리고 매 깊이마다 Visited는 초기화
+            if not visited[i][j] and area[i][j] > height: 
                 bfs(i, j, height)
                 cnt += 1
     
