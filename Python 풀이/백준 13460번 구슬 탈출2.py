@@ -41,6 +41,7 @@ def getPos():
     return rx, ry, bx, by
 
 
+
 def move(x, y, dx, dy):
     cnt = 0
 
