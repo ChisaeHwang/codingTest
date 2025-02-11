@@ -18,54 +18,64 @@ def move_shark(x, y, s, d):
         s = s % cycle
         
         if d == 1:  # 위
-            if s <= x:  # 위로 s만큼 이동 가능
+            dist_to_top = x  # 위쪽 끝까지 거리
+            if s <= dist_to_top:  # 위로 이동 가능
                 x -= s
             else:  # 위로 못감
-                s -= x  # 위로 이동한 만큼 빼기
-                if s <= R-1:  # 아래로 이동 가능
-                    d = 2
-                    x = s
-                else:  # 다시 위로
-                    x = R-1 - (s - (R-1))
-                    d = 1
+                remain = s - dist_to_top  # 위로 이동하고 남은 거리
+                x = 0  # 일단 위쪽 끝으로
+                d = 2  # 아래 방향으로
+                x += remain  # 아래로 남은 거리만큼
+                
+                if x >= R:  # 아래쪽 끝을 넘어가면
+                    x = 2 * (R-1) - x  # 넘어간 만큼 (R-1에서 뺌)
+                    d = 1  # 다시 위로
+                    
         else:  # 아래
-            if s <= R-1-x:  # 아래로 이동 가능
+            dist_to_bottom = R-1-x  # 아래쪽 끝까지 거리
+            if s <= dist_to_bottom:  # 아래로 이동 가능
                 x += s
             else:  # 아래로 못감
-                s -= (R-1-x)  # 아래로 이동한 만큼 빼기
-                if s <= R-1:  # 위로 이동 가능
-                    d = 1
-                    x = R-1 - s
-                else:  # 다시 아래로
-                    x = s - (R-1)
-                    d = 2
+                remain = s - dist_to_bottom  # 아래로 이동하고 남은 거리
+                x = R-1  # 일단 아래쪽 끝으로
+                d = 1  # 위 방향으로
+                x -= remain  # 위로 남은 거리만큼
+                
+                if x < 0:  # 위쪽 끝을 넘어가면
+                    x = abs(x)  # 넘어간 만큼
+                    d = 2  # 다시 아래로
                     
     else:  # 좌우 이동
         cycle = 2 * (C - 1)
         s = s % cycle
         
         if d == 3:  # 오른쪽
-            if s <= C-1-y:  # 오른쪽으로 이동 가능
+            dist_to_right = C-1-y  # 오른쪽 끝까지 거리
+            if s <= dist_to_right:  # 오른쪽으로 이동 가능
                 y += s
             else:  # 오른쪽으로 못감
-                s -= (C-1-y)  # 오른쪽으로 이동한 만큼 빼기
-                if s <= C-1:  # 왼쪽으로 이동 가능
-                    d = 4
-                    y = C-1 - s
-                else:  # 다시 오른쪽으로
-                    y = s - (C-1)
-                    d = 3
+                remain = s - dist_to_right  # 오른쪽으로 이동하고 남은 거리
+                y = C-1  # 일단 오른쪽 끝으로
+                d = 4  # 왼쪽 방향으로
+                y -= remain  # 왼쪽으로 남은 거리만큼
+                
+                if y < 0:  # 왼쪽 끝을 넘어가면
+                    y = abs(y)  # 넘어간 만큼
+                    d = 3  # 다시 오른쪽으로
+                    
         else:  # 왼쪽
-            if s <= y:  # 왼쪽으로 이동 가능
+            dist_to_left = y  # 왼쪽 끝까지 거리
+            if s <= dist_to_left:  # 왼쪽으로 이동 가능
                 y -= s
             else:  # 왼쪽으로 못감
-                s -= y  # 왼쪽으로 이동한 만큼 빼기
-                if s <= C-1:  # 오른쪽으로 이동 가능
-                    d = 3
-                    y = s
-                else:  # 다시 왼쪽으로
-                    y = C-1 - (s - (C-1))
-                    d = 4
+                remain = s - dist_to_left  # 왼쪽으로 이동하고 남은 거리
+                y = 0  # 일단 왼쪽 끝으로
+                d = 3  # 오른쪽 방향으로
+                y += remain  # 오른쪽으로 남은 거리만큼
+                
+                if y >= C:  # 오른쪽 끝을 넘어가면
+                    y = 2 * (C-1) - y  # 넘어간 만큼 (C-1에서 뺌)
+                    d = 4  # 다시 왼쪽으로
     
     return x, y, d
 
